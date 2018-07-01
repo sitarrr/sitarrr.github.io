@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        Hello World｜undefined
+        First touch to assembly language｜undefined
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/2018/06/30/hello-world/">
+    <link rel="canonical" href="http://yoursite.com/2018/07/01/First-touch-to-assembly-language/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -145,12 +145,12 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>Hello World</h1>
+                    <h1>First touch to assembly language</h1>
                     
                     <span class="meta">
                          作者 sitarrr
                         <span>
-                          日期 2018-06-30
+                          日期 2018-07-01
                          </span>
                     </span>
                     <div class="tags text-center">
@@ -162,7 +162,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            Hello World
+            First touch to assembly language
         </span>
     </div>
 </header>
@@ -173,31 +173,136 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2>Quick Start</h2>
-<h3>Create a new post</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3>Run server</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3>Generate static files</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3>Deploy to remote sites</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <h1>#First touch to assembly language #</h1>
+<h2>什么是C语言代码、汇编指令、机器码？</h2>
+<p>C语言面向对象或过程，汇编指令面向机器。在不同的设备中，汇编语言对应着不同的机器语言指令集，而C语言的语法是固定的，C语言编写的程序要编译成CPU能读懂的机器语言指令无法一一对应，汇编语言与机器语言一一对应。</p>
+<blockquote>
+<p>操作：寄存器BX的内容送到AX中
+&lt;br&gt;1000100111011000              机器指令
+&lt;br&gt;mov ax,bx                    汇编指令
+##数值表示##</p>
+</blockquote>
+<ul>
+<li>数制：二进制 b、十进制 [d]、十六进制 h</li>
+<li>字长：bit、byte、word、dword……
+##寄存器##
+<strong>寄存器</strong></li>
+</ul>
+<p><img src="https://i.imgur.com/vAWefzK.png" alt=""></p>
+<p><strong>通用寄存器：</strong></p>
+<ul>
+<li>EAX：(accumulator)累加寄存器，运算</li>
+<li>EBX：(base)基址寄存器，地址索引</li>
+<li>ECX：(counter)计数寄存器，计数，保存计算值，循环计数</li>
+<li>EDX：(data)数据寄存器，数据传递</li>
+<li>ESP：(stack pointer)堆栈指针，指向目前堆栈位置</li>
+<li>EBP：(base pointer)基址指针寄存器，相对基址位置</li>
+<li>ESI：(source)源变址寄存器</li>
+<li>EDI：(destination)目的变址寄存器</li>
+</ul>
+<p><strong>段寄存器：</strong></p>
+<ul>
+<li>CS：(code segment)代码段寄存器</li>
+<li>DS：(data segment)数据寄存器</li>
+<li>SS：(stack segment)堆栈寄存器</li>
+<li>ES：(extra segment)附加寄存器</li>
+</ul>
+<p><strong>标志寄存器：</strong></p>
+<p>各标志位含义:</p>
+<ol>
+<li>CF（进位标志） =1 算术操作最高位产生了进位或借位 =0 最高位无进位或借位</li>
+<li>PF（奇偶标志） =1 数据最低8位中1的个数为偶数 =0 数据最低8位中1的个数为奇数</li>
+<li>AF（辅助进位标志） =1 D3→D4位产生了进位或借位 =0 D3→D4位无进位或借位</li>
+<li>ZF（零标志） =1 操作结果为0 =0 结果不为0</li>
+<li>SF（符号标志） =1 结果最高位为1 =0 结果最高位为0</li>
+<li>OF（溢出标志） =1 此次运算发生了溢出 =0 无溢出
+&lt;br&gt;例如：
+8位二进制数相加：1001 1100B+0001 1000B 结果为 1011 0100B 此时无进位CF=0，PF=1，AF=1，ZF=0，SF=1，OP=0。</li>
+</ol>
+<p><strong>指令指针寄存器：</strong></p>
+<ul>
+<li>EIP：(instruction pointer)指向有效地址</li>
+</ul>
+<p>寻址方式：</p>
+<ul>
+<li>立即数寻址：MOV EAX,123H</li>
+<li>寄存器寻址：MOV EAX,EBX</li>
+<li>直接寻址：MOV EAX, [12345678H]</li>
+<li>寄存器间接寻址：MOV EAX, [EBX]</li>
+<li>其他寻址</li>
+</ul>
+<p><strong>基本指令</strong></p>
+<ul>
+<li>数据传送：MOV, PUSH,POP,LEA,MOVSX,PUSHAD,POPAD</li>
+<li>算数运算：ADD,INC,SUB, DEC,NEG,CMP,MUL,IMUL,DIV,IDIV</li>
+<li>逻辑运算：AND,OR,NOT,XOR,TEST,SHL,SAL,SHR,SAR,ROL,ROR,RCL,RCR</li>
+<li>转移指令：JMP, J[N]Z(E), J[N]B,JA,JL, JG</li>
+<li>循环指令：LOOP(until ecx=0 stop), JCXZ(when ecx==0 jump)</li>
+<li>串操作：MOVS[B|W|D],CMPS,SCAS,LODS,STOS,REP(DS:SI -&gt; ES:DI  CX times   AL/AX 扫描值)</li>
+<li>其他指令：INT(interupt),RET(return),NOP(no operce),CLD,CALL</li>
+</ul>
+<h2>尝试用ollydbg进行调试</h2>
+<p><strong>各种窗口：</strong></p>
+<p><img src="https://i.imgur.com/XCAfDEi.png" alt=""></p>
+<ul>
+<li>L(og):日志信息</li>
+<li>E(xecute modules):模块信息</li>
+<li>M(emory map):内存映射信息</li>
+<li>T(hreads):线程信息</li>
+<li>W(indows):窗口信息</li>
+<li>H(andles):句柄信息</li>
+<li>C:当前线程上下文</li>
+<li>K:调用链信息</li>
+</ul>
+<p><strong>常用快捷键：</strong></p>
+<p><img src="https://i.imgur.com/6iD4c8l.png" alt=""></p>
+<p><img src="https://i.imgur.com/1k5QM1D.png" alt=""></p>
+<h2>HELLO WORLD文件</h2>
+<p><strong>搜索main函数</strong></p>
+<ol>
+<li>
+<p>代码执行法<br>
+单步步入执行（F7）</p>
+</li>
+<li>
+<p>层层推进法<br>
+逐步调试程序（F8）直到出现“helloworld&quot;弹框
+<img src="https://i.imgur.com/ORrS5dn.png" alt="">
+点击弹框处“确定”，在出现弹框的代码处设置断点（F2），重新运行程序（Ctrl+F2)，将程序运行到断点处（F9），单步步入函数断点（F7），找到主函数
+<img src="https://i.imgur.com/qqQobak.png" alt=""></p>
+</li>
+<li>
+<p>字符串检索法
+&lt;br&gt;运行程序，出现字符串&quot;hello world!&quot;</p>
+<p><img src="https://i.imgur.com/6tXRq5W.png" alt=""></p>
+<p>根据运行结果，进行字符串搜索,进入“插件”窗口-&gt;中文搜索引擎-&gt;智能搜索，进入“地址-反汇编-文本字符串”页面</p>
+<p><img src="https://i.imgur.com/yx0ikQ5.png" alt=""></p>
+<p>右键-&gt;Find-&gt;输入&quot;hello world&quot;-&gt;找到字符串指定位置</p>
+<p><img src="https://i.imgur.com/yP3VgNj.png" alt=""></p>
+<p>双击指定位置处代码，步入函数内部，找到主函数</p>
+<p><img src="https://i.imgur.com/H03CzUH.png" alt=""></p>
+</li>
+<li>
+<p>API检索法（调用处或入口处）</p>
+<p>根据程序运行时出现的弹框界面，可知文本字符串中会出现”MessageBox“
+<img src="https://i.imgur.com/hggUBYW.png" alt="">
+智能搜索查找指定代码
+<img src="https://i.imgur.com/SlYXNtp.png" alt="">
+步入找到主函数
+<img src="https://i.imgur.com/9RwtP14.png" alt=""></p>
+</li>
+</ol>
 
                 <hr>
                 
 
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2018/07/01/软件安全/" data-toggle="tooltip" data-placement="top"
-                           title="软件安全">&larr; Previous Post</a>
-                    </li>
                     
+                    <li class="next">
+                        <a href="/2018/07/01/软件安全/" data-toggle="tooltip" data-placement="top"
+                           title="软件安全">Next Post &rarr;</a>
+                    </li>
                     
                 </ul>
 
@@ -231,7 +336,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">#First touch to assembly language #</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">什么是C语言代码、汇编指令、机器码？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">尝试用ollydbg进行调试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">HELLO WORLD文件</span></a></li></ol></li></ol>
                 </div>
             </div>
         </div>
