@@ -179,7 +179,7 @@
 <p><img src="https://i.imgur.com/coQoo3c.png" alt=""></p>
 <h2>第一步.判断注入点</h2>
 <p><img src="https://i.imgur.com/gR4aibT.png" alt=""></p>
-<p>输入=1，查询成功,
+<p>输入=1，查询成功
 &lt;br&gt;输入1'and'1'='2,查询失败
 &lt;br&gt;输入1’or'1'='1,查询成功，说明存在字符型注入</p>
 <p><img src="https://i.imgur.com/85qAv2G.png" alt=""></p>
@@ -207,13 +207,13 @@
 <h2>第七步.获取数据</h2>
 <p>输入1'or 1=1 union select group_concat(id,first_name,last_name),group_concat(password) from users #，查询成功</p>
 <p><img src="https://i.imgur.com/3Xe0f3C.png" alt=""></p>
-<p>获得flag。。。。。。。</p>
-<h1>二.POST型——注入</h1>
+<p>获得结果</p>
+<p><em>二.POST型——注入</em></p>
 <hr>
 <ol>
-<li>搭建以自己ID命名的MYSQL数据库</li>
-<li>搭建字符型注入页面，用POST传递参数，输入id,显示username,age,sex</li>
-<li>手动一步一步注入，直到拿到flag</li>
+<li><em>搭建以自己ID命名的MYSQL数据库</em></li>
+<li><em>搭建字符型注入页面，用POST传递参数，输入id,显示username,age,sex</em></li>
+<li><em>手动一步一步注入，直到拿到flag</em></li>
 </ol>
 <h1>三.应用burp suite尝试暴破</h1>
 <hr>
@@ -265,17 +265,16 @@
 <img src="https://i.imgur.com/thyue6l.png" alt=""></li>
 </ol>
 <ol>
-<li>抓包后伪造IP地址127.0.0.1，发现
+<li>抓包后伪造IP地址127.0.0.1，发现only chinese can get the flag
 <img src="https://i.imgur.com/9TC3bee.png" alt="">
-参考链接：<a href="https://www.jianshu.com/p/98c08956183d" target="_blank" rel="noopener">https://www.jianshu.com/p/98c08956183d</a></li>
+IP地址伪造参考链接：<a href="https://www.jianshu.com/p/98c08956183d" target="_blank" rel="noopener">https://www.jianshu.com/p/98c08956183d</a></li>
 <li>修改Accept-Language为chinese,得到flag:ZJGSCTF{y3s!I7_i3_s0_e4sy!
 <img src="https://i.imgur.com/OkGeXTB.png" alt=""></li>
 </ol>
 <h2>题目三：密码爆破<a href="http://lab1.xseclab.com/vcode1_bcfef7eacf7badc64aaf18844cdb1c46/index.php" target="_blank" rel="noopener">http://lab1.xseclab.com/vcode1_bcfef7eacf7badc64aaf18844cdb1c46/index.php</a></h2>
-<p>与题一相似，利用burpsuite抓包拦截，选中password破解部分，根据题意，password为四位纯数字数且第一位不为0，因此选择payload type为numbers,范围在1000-9999
-&lt;br&gt;
-<img src="https://i.imgur.com/DlDc2bI.png" alt=""></p>
-<p>得到password:1238</p>
+<p>与题一相似，利用burpsuite抓包拦截，选中password破解部分，根据题意，password为四位纯数字数且第一位不为0，因此选择payload type为numbers,范围在1000-9999</p>
+<p><img src="https://i.imgur.com/DlDc2bI.png" alt=""></p>
+<p>暴力破解，得到password:1238</p>
 <p><img src="https://i.imgur.com/zkHyKtg.png" alt=""></p>
 <p>输入password&amp;&amp;vcode,得到flag:LJLJL789sdf#@sd</p>
 <p><img src="https://i.imgur.com/TnTlrPm.png" alt=""></p>
@@ -323,7 +322,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">一.GET型——注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">第一步.判断注入点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">第二步.判断字段数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">第三步.确定字段顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">第四步.获取当前数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">第五步.获取数据库中的表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">第六步.获取表中的字段名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">第七步.获取数据</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">二.POST型——注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">三.应用burp suite尝试暴破</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">题目一：http://ctf4.shiyanbar.com/web/root/index.php</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">题目二：only localhost can get flaghttp://10.21.13.153:20075/</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">题目三：密码爆破http://lab1.xseclab.com/vcode1_bcfef7eacf7badc64aaf18844cdb1c46/index.php</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">一.GET型——注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">第一步.判断注入点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">第二步.判断字段数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">第三步.确定字段顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">第四步.获取当前数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">第五步.获取数据库中的表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">第六步.获取表中的字段名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">第七步.获取数据</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">三.应用burp suite尝试暴破</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">题目一：http://ctf4.shiyanbar.com/web/root/index.php</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">题目二：only localhost can get flaghttp://10.21.13.153:20075/</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">题目三：密码爆破http://lab1.xseclab.com/vcode1_bcfef7eacf7badc64aaf18844cdb1c46/index.php</span></a></li></ol></li></ol>
                 </div>
             </div>
         </div>
