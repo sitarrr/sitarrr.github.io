@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        the 3rd day‘s note in web｜undefined
+        wp for JULY 2nd｜undefined
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/2018/07/02/the-3rd-day-in-php-mysql-burp-suite/">
+    <link rel="canonical" href="http://yoursite.com/2018/07/02/wp-for-JULY-2nd/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -145,7 +145,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>the 3rd day‘s note in web</h1>
+                    <h1>wp for JULY 2nd</h1>
                     
                     <span class="meta">
                          作者 sitarrr
@@ -162,7 +162,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            the 3rd day‘s note in web
+            wp for JULY 2nd
         </span>
     </div>
 </header>
@@ -173,131 +173,16 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <h1>PHP</h1>
-<hr>
-<h2>语言基础</h2>
-<h4>三种注释</h4>
-<p>单行注释</p>
-<ul>
-<li>//add</li>
-<li>#add</li>
-</ul>
-<p>多行注释</p>
-<ul>
-<li>/* add*/</li>
-</ul>
-<h4>变量规则</h4>
-<ul>
-<li>变量以符号$开头，如$add</li>
-<li>变量必须以字母或下划线开头，且对<strong>大小写敏感</strong></li>
-</ul>
-<h4>引号的区别</h4>
-<pre><code>$a='aa';
-$b='bb';
-echo '$a';//单引号不解析变量，输出结果为$a
-echo '&lt;br&gt;';
-echo &quot;$b&quot;;//双引号解析变量，输出结果为bb
-</code></pre>
-<p><strong>其他if else&amp;&amp;while语句与C语言一致</strong></p>
-<h4>索引数组</h4>
-<p>array()函数用于创建数组，索引自动分配（索引从0开始）</p>
-<p>.是字符串连接符</p>
-<p><strong>EG:</strong></p>
-<pre><code>$data=array(&quot;a&quot;,&quot;b&quot;,&quot;c&quot;);
-echo &quot;I have &quot;.$data[0].&quot;,&quot;.$data[1].&quot; and &quot;.$data[2].&quot;.&quot;;
-//输出 I have a, band c.
-</code></pre>
-<h4>关联数组</h4>
-<p>在数组中创建键值对</p>
-<p><strong>EG：</strong></p>
-<pre><code>$age=array(&quot;bill&quot;=&gt;&quot;35&quot;,&quot;steve&quot;=&gt;&quot;37&quot;,&quot;peter&quot;=&gt;&quot;43&quot;);
-echo &quot;peter is &quot;.$age['peter'].&quot;years old.&quot;;
-//输出 peter is 43 years old. 
-</code></pre>
-<h4>三层架构中的信息流</h4>
-<p><img src="https://i.imgur.com/zRDXSGo.png" alt=""></p>
-<p><strong>HTTP：</strong></p>
-<p>超文本传输协议(HyperText Transfer Protocol -- HTTP)是一个设计来使客户端和服务器顺利进行通讯的协议。
-HTTP在客户端和服务器之间以request-response protocol（请求-回复协议）工作。</p>
-<p><strong>URL：</strong></p>
-<p>作用：提供资源（通常是文档）的路径或位置
-&lt;br&gt;结构：协议://授权/路径?查询
-&lt;br&gt;例子：http://www.cobranet.org/about.php?id=1</p>
-<h4>GET请求：从指定服务器获取数据</h4>
-<p><img src="https://i.imgur.com/iaVPgOh.png" alt=""></p>
-<p>使用GET方法时，查询字符串（键值对）被附加在URL地址后面一起发送到服务器：&lt;br&gt;
-/test/demo_form.jsp?name1=value1&amp;name2=value2</p>
-<p>特点：</p>
-<ul>
-<li>GET请求能够<strong>被缓存</strong></li>
-<li>GET请求会保存在浏览器的<strong>浏览记录</strong>中</li>
-<li>以GET请求的URL能够保存为<strong>浏览器书签</strong></li>
-<li>GET请求<strong>有长度限制</strong></li>
-<li>GET请求主要用以<strong>获取数据</strong></li>
-</ul>
-<h4>POST请求：提交数据给指定的服务器处理</h4>
-<p><img src="https://i.imgur.com/bw0DvC9.png" alt=""></p>
-<p>查询字符串在POST信息中单独存在，和HTTP请求一起发送到服务器：</p>
-<pre><code>POST /test/demo_form.jsp HTTP/1.1
-Host: w3schools.com
-name1=value1&amp;name2=value2
-</code></pre>
-<p>特点：</p>
-<ul>
-<li>
-<pre><code>POST请求**不能被缓存**下来
-</code></pre>
-</li>
-<li>
-<pre><code>POST请求**不会保存**在浏览器**浏览记录**中
-</code></pre>
-</li>
-<li>
-<pre><code>以POST请求的URL**无法保存为浏览器书签**
-</code></pre>
-</li>
-<li>
-<pre><code>POST请求**没有长度限制**
-</code></pre>
-</li>
-</ul>
-<p><strong>GET和POST的区别：</strong>
-<img src="https://i.imgur.com/U5SizmK.png" alt=""></p>
-<h2>MYSQL</h2>
-<hr>
-<p><strong>字段和记录</strong></p>
-<p><img src="https://i.imgur.com/qXn03u8.png" alt=""></p>
-<p><strong>如何确定一条数据</strong></p>
-<p>数据库-&gt;数据表-&gt;字段-&gt;数据</p>
-<p><strong>Mysql相关命令</strong></p>
-<p>参考链接：<a href="https://err0rzz.github.io/2017/11/26/linux%E4%B8%8B%E7%9A%84mysql%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">https://err0rzz.github.io/2017/11/26/linux%E4%B8%8B%E7%9A%84mysql%E4%BD%BF%E7%94%A8/</a></p>
-<p><strong>连接操作符</strong></p>
-<ul>
-<li>AND</li>
-<li>OR</li>
-<li>SELECT *FROM <strong>USER's_TABLE</strong> WHERE <strong>条件表达式</strong></li>
-</ul>
-<p><strong>附加命令</strong></p>
-<ul>
-<li>union select :联合查询，前一条查询语句失败后执行后一条语句。</li>
-<li>group by:后接数字，表示按照第几列进行排序。<strong>(start from 1)</strong></li>
-<li>group_concat:将查询结果以一行的形式输出</li>
-</ul>
-
+                
                 <hr>
                 
 
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2018/07/02/wp-for-JULY-2nd/" data-toggle="tooltip" data-placement="top"
-                           title="wp for JULY 2nd">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2018/07/01/First-touch-to-assembly-language/" data-toggle="tooltip" data-placement="top"
-                           title="First touch to assembly language">Next Post &rarr;</a>
+                        <a href="/2018/07/02/the-3rd-day-in-php-mysql-burp-suite/" data-toggle="tooltip" data-placement="top"
+                           title="the 3rd day‘s note in web">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -332,7 +217,7 @@ name1=value1&amp;name2=value2
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">PHP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">语言基础</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-text">三种注释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-text">变量规则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-text">引号的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-text">索引数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-text">关联数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-text">三层架构中的信息流</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-text">GET请求：从指定服务器获取数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-text">POST请求：提交数据给指定的服务器处理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">MYSQL</span></a></li></ol></li></ol>
+                    
                 </div>
             </div>
         </div>
