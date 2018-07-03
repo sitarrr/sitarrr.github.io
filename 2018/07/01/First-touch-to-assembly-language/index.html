@@ -177,9 +177,13 @@
 <h2>什么是C语言代码、汇编指令、机器码？</h2>
 <p>C语言面向对象或过程，汇编指令面向机器。在不同的设备中，汇编语言对应着不同的机器语言指令集，而C语言的语法是固定的，C语言编写的程序要编译成CPU能读懂的机器语言指令无法一一对应，汇编语言与机器语言一一对应。</p>
 <blockquote>
-<p>操作：寄存器BX的内容送到AX中
-&lt;br&gt;1000100111011000              机器指令
-&lt;br&gt;mov ax,bx                    汇编指令</p>
+<p>操作：寄存器BX的内容送到AX中</p>
+</blockquote>
+<blockquote>
+<p>1000100111011000              机器指令</p>
+</blockquote>
+<blockquote>
+<p>mov ax,bx                    汇编指令</p>
 </blockquote>
 <p>##数值表示##</p>
 <ul>
@@ -300,13 +304,94 @@
 <ol>
 <li>
 <p>修改内存数据</p>
-<p>第一步，找到主函数，进入主函数，在“地址-HEX数据”页面跳转到字符串所在位置“004092A0”（CTRL+G），找到字符串所在内存
-<img src="https://i.imgur.com/0PogPAK.png" alt="">
-选中字符串所占的内存，修改（CTRL+E）
-<img src="https://i.imgur.com/8JW765S.png" alt="">
-<img src="https://i.imgur.com/PftFHpJ.png" alt=""></p>
+<p>找到主函数，进入主函数，在“地址-HEX数据”（内存）窗口到字符串跳转位置“004092A0”（CTRL+G），找到字符串所在内存</p>
+<p><img src="https://i.imgur.com/0PogPAK.png" alt=""></p>
+<p>选中字符串所占的内存，修改（CTRL+E），右键内存窗口保存为可执行文件，保存全部修改后保存文件</p>
+<p><img src="https://i.imgur.com/8JW765S.png" alt=""></p>
+<p><img src="https://i.imgur.com/5HZoe0N.png" alt=""></p>
+<p>运行程序，发现修改已经实现</p>
+<p><img src="https://i.imgur.com/PfBgR3l.png" alt=""></p>
+</li>
+<li>
+<p>修改汇编码——在新的位置创建字符串并修改指令</p>
+<p>在新的位置创建字符串</p>
+<p><img src="https://i.imgur.com/U7QUnaZ.png" alt=""></p>
+<p>找到主函数，进入主函数，找到表示字符串跳转的PUSH指令，修改push的地址为新创建的字符串处</p>
+<p><img src="https://i.imgur.com/nj0Lhnv.png" alt=""></p>
+<p>右键汇编代码窗口保存为可执行文件，保存全部修改后保存文件</p>
+<p><img src="https://i.imgur.com/VhrpSgZ.png" alt=""></p>
+<p>emmmm....发现没有修改成功，经尝试，只在代码界面保存或者先内存后代码界面保存都没有修改成功。
+所以尝试一下先保存新建字符串为可执行文件后，再修改新文件表示字符串跳转的PUSH函数后的地址到新建字符串处</p>
+<p><img src="https://i.imgur.com/0SOkS8P.png" alt=""></p>
+<p>居然成功了。。。。为什么？</p>
 </li>
 </ol>
+<h2>fact文件修改</h2>
+<ol>
+<li>
+<p>先运行并观察程序，发现输入0返回1，输入1-9返回其减一后的阶乘，输入其他数输出out of range</p>
+<p><img src="https://i.imgur.com/ny0YBC9.png" alt="">
+<img src="https://i.imgur.com/JUwF9CE.png" alt="">
+<img src="https://i.imgur.com/bZmeNHC.png" alt=""></p>
+</li>
+<li>
+<p>单步运行程序，程序中输出pls input a num，找到主函数</p>
+<p><img src="https://i.imgur.com/ip7u1uX.png" alt=""></p>
+</li>
+</ol>
+<ol>
+<li>
+<p>进入函数，发现JMP指令</p>
+<p><img src="https://i.imgur.com/1CReGz4.png" alt=""></p>
+</li>
+</ol>
+<ol>
+<li>
+<p>找到跳转处，发现一串看起来跟输入有关的汇编码</p>
+<p><img src="https://i.imgur.com/E77lUz4.png" alt=""></p>
+</li>
+</ol>
+<ol>
+<li>
+<p>观察指令
+<img src="https://i.imgur.com/APhCOa8.png" alt=""></p>
+<p>（1）可读：</p>
+</li>
+</ol>
+<p><code>while( [local.2] &gt;= 0xA )jump</code></p>
+<p><img src="https://i.imgur.com/OS0iWmx.png" alt=""></p>
+<pre><code> （2）可读：
+
+ while( [local.2] &lt; 0x0 )jump
+
+ （3）由（1）（2）可以发现两者跳转到同一位置0040FA26H
+</code></pre>
+<p><img src="https://i.imgur.com/15K10zu.png" alt=""></p>
+<pre><code> （4）观察0040FA26H这一位置下的一系列汇编码发现执行out of range的一系列淘汰这个number的指令。因此判断[local.2]为输入的数。同时十六进制下，0xA表示10,0X0表示0，验证1.中猜想可输入的范围为0-9
+</code></pre>
+<p><img src="https://i.imgur.com/pvorrot.png" alt=""></p>
+<pre><code> （5）将1赋值给[local.1]后执行jump指令，将[local.1]赋值给edx
+</code></pre>
+<p><img src="https://i.imgur.com/4wO9qjI.png" alt=""></p>
+<pre><code> (6)继续运行，可读：
+
+  while(edx&gt;=[local.2])jump
+ 
+ （7）手动输入0-9任意数字赋值给[local.2]，
+</code></pre>
+<p><img src="https://i.imgur.com/Id7qGlD.png" alt=""></p>
+<pre><code>  (8)于是（6）不跳转，继续执行，可读：
+
+eax=[local.3];
+eax*=[local.1];
+[local.3]=eax;
+</code></pre>
+<p><img src="https://i.imgur.com/ZSGyzYZ.png" alt=""></p>
+<pre><code> （9）跳转，一系列指令可以判断[local.1]表示自加数，并用edx暂时存储，while(edx&gt;=[local.2])jump,若不跳转，一系列指令实现的是将1至[local.1]的阶乘结果暂存在eax中，再将值赋给[local.3]，此处发现问题当edx&gt;=输入数时变发生跳转，阶乘中缺少乘以数本身的指令，故修改指令jge short fact.0040FA0F为jg short fact.0040FA0F，实现阶乘
+
+ （10）保存文件，运行程序，运行结果正确
+</code></pre>
+<p><img src="https://i.imgur.com/rGnndDz.png" alt=""></p>
 
                 <hr>
                 
@@ -351,7 +436,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">#First touch to assembly language #</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">什么是C语言代码、汇编指令、机器码？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">尝试用ollydbg进行调试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">HELLO WORLD文件初尝试</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">#First touch to assembly language #</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">什么是C语言代码、汇编指令、机器码？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">尝试用ollydbg进行调试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">HELLO WORLD文件初尝试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">fact文件修改</span></a></li></ol></li></ol>
                 </div>
             </div>
         </div>
