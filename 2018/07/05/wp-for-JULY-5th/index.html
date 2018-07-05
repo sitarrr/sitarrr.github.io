@@ -155,6 +155,9 @@
                     </span>
                     <div class="tags text-center">
                         
+                        <a class="tag" href="/tags/#逆向 汇编代码"
+                           title="逆向 汇编代码">逆向 汇编代码</a>
+                        
                     </div>
                 </div>
             </div>
@@ -173,7 +176,52 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                
+                <h1>第一关.homework.exe</h1>
+<hr>
+<h2>一，观察程序</h2>
+<p>任意输入，测试程序</p>
+<p><img src="https://i.imgur.com/Ak3tZT8.png" alt=""></p>
+<p>发现可以重复输入，若输入错误，程序会返回固定语句</p>
+<h2>二，打开OD，观察汇编代码</h2>
+<p><img src="https://i.imgur.com/y3rw3TL.png" alt=""></p>
+<p>进入主函数，发现[local.38]表示输入的字符串</p>
+<p><img src="https://i.imgur.com/BW1qZkU.png" alt=""></p>
+<p>将s压入栈，call strlen函数，运行后发现eax中存储strlen(s)的值</p>
+<p><img src="https://i.imgur.com/Xl4xv3O.png" alt=""></p>
+<p>将eax中的值赋给[local.4],并与0x1B（转换为十进制为27）相比较</p>
+<p>即将字符串s的长度与26相比较，</p>
+<p>若不相等，跳转至输出Retry~~的指令处；</p>
+<p>若相等，跳转至逐个判断单个字符的指令处</p>
+<p><img src="https://i.imgur.com/rv8XhnR.png" alt=""></p>
+<p>其中发现</p>
+<pre><code>00401446|. 31D0  ||xor eax,edx ; 
+</code></pre>
+<p>xor指令表示进行亦或运算，两者二进制位上的数，同为0，异为1，储存在前一个数中</p>
+<p><img src="https://i.imgur.com/wlexNr6.png" alt=""></p>
+<p>可发现[local.13]是与输入字符串相比较的字符串，在内存中找到字符串Tnfb}eu'<code>fgn{b|d0xa3gz6ryjc，再次调试，找到解密后的字符串Today</code>s homework is so easy</p>
+<p><img src="https://i.imgur.com/BN2l6TT.png" alt=""></p>
+<p>运行函数，输入正确</p>
+<h2>第二关.Easy_CrackMe.exe</h2>
+<hr>
+<h3>一.观察程序</h3>
+<p><img src="https://i.imgur.com/HDcFKnB.png" alt=""></p>
+<p>输入错误，显示incorrect password</p>
+<h3>二.用OD调试</h3>
+<p>1.进入主函数，找到输出incorrect password的语句</p>
+<p><img src="https://i.imgur.com/zL1da1d.png" alt=""></p>
+<p>2.一步步反推观察cmp指令</p>
+<p><img src="https://i.imgur.com/j7qGK1L.png" alt=""></p>
+<p>3.发现[esp+0X5]与0x61(ACSII:a)比较若！=0才回跳转，说明[esp+0X5]=a是password的一部分</p>
+<p><img src="https://i.imgur.com/WeLEocD.png" alt=""></p>
+<p>4.若不跳转，那么继续执行语句，发现指令在[esp+0XA]处开辟了两个空间并让‘5y’入栈，经过上一条指令，可以确定[esp]系列指向的是password的地址</p>
+<p>5.同样找到输出congeatulation部分的语句，步步反推，观察cmp指令，</p>
+<p><img src="https://i.imgur.com/aYMQQF8.png" alt=""></p>
+<p>6.发现当[esp+0X4]！=0X45(ASCII:E)时跳转，说明[esp+0X4]=E是password的一部分</p>
+<p><img src="https://i.imgur.com/gsoL7oy.png" alt=""></p>
+<p>7.发现逐个字符比较的函数，不难发现入栈的字符串为R3versing,而函数中也是与这个字符串比较，说明是password的一部分，在栈中的开始位置是esp+0X10</p>
+<p>8.通过上述过程按顺序得到字符串Ea5yR3versing,运行程序，返回正确。</p>
+<p><img src="https://i.imgur.com/vm2ksNy.png" alt=""></p>
+
                 <hr>
                 
 
@@ -217,7 +265,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">第一关.homework.exe</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">一，观察程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">二，打开OD，观察汇编代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">第二关.Easy_CrackMe.exe</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">一.观察程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">二.用OD调试</span></a></li></ol></li></ol></li></ol>
                 </div>
             </div>
         </div>
@@ -238,6 +286,9 @@
                         <a href="/tags/">FEATURED TAGS</a>
                     </h5>
                     <div class="tags">
+                        
+                        <a class="tag" href="/tags/#逆向 汇编代码"
+                           title="逆向 汇编代码">逆向 汇编代码</a>
                         
                     </div>
                 </section>
