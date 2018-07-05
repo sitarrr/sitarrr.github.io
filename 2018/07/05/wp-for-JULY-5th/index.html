@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        wp for JULY 3rd（unfinished)｜undefined
+        wp for JULY 5th｜undefined
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/2018/07/03/wp-for-JULY-3rd/">
+    <link rel="canonical" href="http://yoursite.com/2018/07/05/wp-for-JULY-5th/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -145,18 +145,15 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>wp for JULY 3rd（unfinished)</h1>
+                    <h1>wp for JULY 5th</h1>
                     
                     <span class="meta">
                          作者 sitarrr
                         <span>
-                          日期 2018-07-03
+                          日期 2018-07-05
                          </span>
                     </span>
                     <div class="tags text-center">
-                        
-                        <a class="tag" href="/tags/#堆栈"
-                           title="堆栈">堆栈</a>
                         
                     </div>
                 </div>
@@ -165,7 +162,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            wp for JULY 3rd（unfinished)
+            wp for JULY 5th
         </span>
     </div>
 </header>
@@ -176,176 +173,16 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <h1>swap 程序的栈使用情况分析</h1>
-<hr>
-<h2>代码一——不能实现</h2>
-<h3>C代码:</h3>
-<pre><code> #include&lt;stdio.h&gt;
- void swap(int a,int b)
- {
-	  int c=a;
-	  a=b;
-	  b=c;
- }
- int main()
- {
-  int a=1,b=0;
-	  swap(a,b);
-  return 0;
- }
-</code></pre>
-<h3>汇编代码</h3>
-<pre><code> 2: void swap(int a,int b)
- 3: {
-
-009F1F90 55                push ebp  /*
-009F1F91 8B EC             mov  ebp,esp  
-009F1F93 81 EC CC 00 00 00 sub  esp,0CCh  
-009F1F99 53                push ebx  
-009F1F9A 56                push esi  
-009F1F9B 57                push edi  
-009F1F9C 8D BD 34 FF FF FF lea  edi,[ebp-0CCh]  
-009F1FA2 B9 33 00 00 00    mov  ecx,33h  
-009F1FA7 B8 CC CC CC CC    mov  eax,0CCCCCCCCh  
-009F1FAC F3 AB             rep stos dword ptr es:[edi]
-</code></pre>
-<p>1.根据上述汇编码可以得到寄存器在栈中的位置</p>
-<p><img src="https://i.imgur.com/aFTC1cT.png" alt=""></p>
-<pre><code> 4: int c = a;
-
-009F1FAE 8B 45 08          mov eax,dword ptr [a]
-009F1FB1 89 45 F8          mov dword ptr [c],eax 
-</code></pre>
-<p>2.用EAX寄存器暂时保存a,再将EAX寄存器中的值赋值给c</p>
-<pre><code> 5: a = b;
-
-009F1FB4 8B 45 0C          mov eax,dword ptr [b]  
-009F1FB7 89 45 08          mov dword ptr [a],eax  
-
- 6: b = c;
-
-009F1FBA 8B 45 F8          mov eax,dword ptr [c]  
-009F1FBD 89 45 0C          mov dword ptr [b],eax 
-
- 7: }   
-</code></pre>
-<p>3.这两步与第二步相似，同时发现EAX并没有入栈</p>
-<pre><code>013B1FC0 5F                pop edi  
-013B1FC1 5E                pop esi  
-013B1FC2 5B                pop ebx  
-013B1FC3 8B E5             mov esp,ebp  
-013B1FC5 5D                pop ebp  
-013B1FC6 C3                ret  
-</code></pre>
-<p>4.寄存器逐个出栈，寄存器恢复原状</p>
-<pre><code>013B1864 E8 25 FB FF FF    callswap (013B138Eh)
-
-013B1869 83 C4 08          add esp,8  
-
-12:printf(&quot;%d  %d&quot;, a, b);
-
-013B186C 8B 45 EC          mov eax,dword ptr [b]  
-013B186F 50                pusheax  
-013B1870 8B 4D F8          mov ecx,dword ptr [a]  
-013B1873 51                pushecx  
-013B1874 68 30 7B 3B 01    pushoffset string &quot;%d  %d&quot; (013B7B30h)  
-013B1879 E8 BB FA FF FF    call_printf (013B1339h)  
-013B187E 83 C4 0C          add esp,0Ch  
-
-13:return 0;
-013B1881 33 C0             xor eax,eax  
-14: }
-</code></pre>
-<p>5.发现返回后的代码中，dword ptr[b],dword ptr[a],还是表示原值，并没有发生交换，所以结果a,b没有完成交换</p>
-<p><strong>结果</strong></p>
-<p><img src="https://i.imgur.com/x9jWYwx.png" alt=""></p>
-<h2>代码二——能实现</h2>
-<h3>C代码</h3>
-<pre><code>#include&lt;stdio.h&gt;
-void swap(int *a,int *b)
-{
-	int c = *a;
-	*a = *b;
-	*b = c;
-}
-int main()
-{
-	int a = 1, b = 0;
-	swap(&amp;a,&amp;b);
-	printf(&quot;%d  %d&quot;, a, b);
-	return 0;
-}
-</code></pre>
-<h3>汇编代码</h3>
-<pre><code>11:swap(&amp;a,&amp;b);
-
-00231866 8D 45 E8    lea  eax,[b] //将b的地址传给eax 
-00231869 50          push eax     //eax入栈
-0023186A 8D 4D F4    lea  ecx,[a] //将b的地址传给ecx
-0023186D 51          push ecx     //ecx入栈
-
- 2: void swap(int *a,int *b)
- 3: {
-
-00231F90 55                push ebp  
-00231F91 8B EC             mov  ebp,esp  
-00231F93 81 EC CC 00 00 00 sub  esp,0CCh  
-00231F99 53                push ebx  
-00231F9A 56                push esi  
-00231F9B 57                push edi  
-00231F9C 8D BD 34 FF FF FF lea edi,[ebp-0CCh]  
-00231FA2 B9 33 00 00 00    mov ecx,33h  
-00231FA7 B8 CC CC CC CC    mov eax,0CCCCCCCCh  
-00231FAC F3 AB             rep stosdword ptr es:[edi]  
-</code></pre>
-<p>1.根据上述汇编码可以得到寄存器在栈中的位置
-<img src="https://i.imgur.com/5O2iHgv.png" alt=""></p>
-<pre><code> 4: 	int c = *a;
-00231FAE 8B 45 08         mov eax,dword ptr [a] 
-
-
- 4: 	int c = *a;
-00231FB1 8B 08            mov ecx,dword ptr [eax] 
-00231FB3 89 4D F8         mov dword ptr [c],ecx
-
-
- 5: 	*a = *b;
-00231FB6 8B 45 08         mov eax,dword ptr [a]  
-00231FB9 8B 4D 0C         mov ecx,dword ptr [b]  
-00231FBC 8B 11            mov edx,dword ptr [ecx]  
-00231FBE 89 10            mov dword ptr [eax],edx  
-
-
- 6: 	*b = c;
-
-00231FC0 8B 45 0C         mov eax,dword ptr [b]  
-00231FC3 8B 4D F8         mov ecx,dword ptr [c]  
-00231FC6 89 08            mov dword ptr [eax],ecx  
-
- 7: }
-00231FC8 5F               pop edi  
-00231FC9 5E               pop esi  
-00231FCA 5B               pop ebx  
-00231FCB 8B E5            mov esp,ebp  
-00231FCD 5D               pop ebp  
-00231FCE C3               ret  
-</code></pre>
-<p><img src="https://i.imgur.com/xNHLcLR.png" alt=""></p>
-
+                
                 <hr>
                 
 
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2018/07/04/wp-for-JULY-4th/" data-toggle="tooltip" data-placement="top"
-                           title="wp for JULY 4th">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2018/07/02/wp-for-JULY-2nd/" data-toggle="tooltip" data-placement="top"
-                           title="wp for JULY 2nd(unfinished)">Next Post &rarr;</a>
+                        <a href="/2018/07/04/Pretty-strategy-of-union-select-in-SQL/" data-toggle="tooltip" data-placement="top"
+                           title="Pretty strategy of union select in SQL">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -380,7 +217,7 @@ int main()
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">swap 程序的栈使用情况分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">代码一——不能实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">C代码:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">汇编代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">代码二——能实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">C代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">汇编代码</span></a></li></ol></li></ol></li></ol>
+                    
                 </div>
             </div>
         </div>
@@ -401,9 +238,6 @@ int main()
                         <a href="/tags/">FEATURED TAGS</a>
                     </h5>
                     <div class="tags">
-                        
-                        <a class="tag" href="/tags/#堆栈"
-                           title="堆栈">堆栈</a>
                         
                     </div>
                 </section>
